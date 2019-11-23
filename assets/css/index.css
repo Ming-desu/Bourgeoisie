@@ -1,0 +1,259 @@
+* {
+    box-sizing: border-box;
+    line-height: 1.15;
+    font-family: 'Muli';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f7f7;
+}
+
+@font-face {
+  font-family: "Muli";
+  src: url("http://localhost/Bourgeoisie/assets/fonts/Muli[wght].ttf");
+}
+
+@font-face {
+  font-family: "Font Awesome";
+  src: url('http://localhost/Bourgeoisie/assets/fonts/Font-Awesome.otf');  
+}
+
+@font-face {
+  font-family: "Poppins Regular";
+  src: url('http://localhost/Bourgeoisie/assets/fonts/Poppins-Regular.ttf');
+}
+
+.container {
+	width: 100%;
+	min-height: 100vh;
+	position: relative;
+	display: grid;
+	place-items: center;
+}
+
+.help {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+}
+
+.help a {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.overlay {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	z-index: -1;
+}
+
+.overlay .bg-blue-1 {
+	background-color: #1460AA;
+	width: 40%;
+	height: 100%;
+}
+
+.overlay .bg-white-1 {
+	background-color: #fff;
+	width: 60%;
+	height: 100%;
+}
+
+.content {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	width: 60vw;
+	height: 30rem;
+	border-radius: 4px;
+	overflow: hidden;
+	box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.4);
+}
+
+.content-register {
+	grid-template-columns: 1fr auto;
+}
+
+.content .bg-blue-1 {
+	width: 20vw;
+	background-color: #1460AA;
+}
+
+.content .content-left {
+	display: grid;
+	place-items: center;
+}
+
+.content .content-left .header {
+	padding: 0 3rem;
+}
+
+.content .content-left .header h1 {
+	margin: 0 auto;
+	width: 5rem;
+	height: 5rem;
+	line-height: 5rem;
+	text-align: center;
+	background-color: #fff;
+	border-radius: 50%;
+	font-size: 2.4rem;
+	color: #1460AA;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+.content .content-left .header h2 {
+	text-align: center;
+	color: #fff;
+	letter-spacing: 1px;
+	padding: 1rem 0;
+	margin-bottom: 1rem;
+	border-bottom: 1px solid #ccc;
+}
+
+.content .content-left .header p {
+	text-align: justify;
+	color: #ccc;
+}
+
+.content .bg-white-1 {
+	background-color: #fff;
+}
+
+.content .content-right {
+	padding: 4rem 6rem;
+	display: grid;
+	grid-template-rows: auto 1fr;
+}
+
+.content .content-right .header {
+	margin-bottom: 2rem;
+	text-align: center;
+}
+
+form {
+	align-self: center;
+}
+
+.form-group {
+	margin-bottom: 1rem;
+}
+
+.form-group > * {
+	display: block;
+	width: 100%;
+}
+
+.form-group input {
+	height: 42px;
+	padding: 0 .5rem;
+	outline: none;
+	border: 1px solid #ccc;
+	color: #1460AA;
+	border-radius: 4px;
+	margin-top: .4rem;
+}
+
+.form-group input:focus {
+	border-color: dodgerblue;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.btn {
+	text-decoration: none;
+	color: #333;
+	background: none;
+	outline: none;
+	border: none;
+	padding: 1rem 2rem;
+	transition: all 0.6s ease;
+}
+
+.btn-link {
+	padding: 0;
+	font-size: .8rem;
+	color: #8bc34a;
+}
+
+.btn-link:hover {
+	color: #aed581;
+}
+
+.btn-block {
+	display: block;
+	width: 100%;
+}
+
+.btn-blue-dark {
+	margin-top: 1rem;
+	background-color: #1460AA;
+	color: #fff;
+	border-radius: 50rem;
+	cursor: pointer;
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.btn-blue-dark:hover {
+	background-color: dodgerblue;
+}
+
+@media screen and (max-width: 900px) {
+	.overlay div {
+		display: block;
+		width: 100% !important;
+		height: 50% !important;
+	}
+
+	.content {
+		grid-template-columns: unset;
+		grid-template-rows: auto 1fr;
+		height: 40rem;
+	}
+
+	.content .content-left {
+		width: 100%;
+		height: 20rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	} 
+
+	.content-register .content-left {
+		order: 0;
+		height: 27.5vh !important;
+	}
+
+	.content .content-left h2 {
+		border: none !important;
+		margin: 0 !important;
+		padding-bottom: 1rem;
+	}
+
+	.content .content-left .header p {
+		display: none;
+	}
+
+	.content .content-right {
+		padding: 1rem 4rem 0 4rem;
+	}
+
+	.content .content-right .header {
+		margin-bottom: 1rem;
+	}
+
+	.form-group {
+		margin-bottom: .5rem;
+	}
+
+	.form-group input {
+		height: 30px;
+	}
+}

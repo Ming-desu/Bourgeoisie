@@ -1,0 +1,79 @@
+<script>
+    let sid = undefined;
+
+    let qrcode = new QRCode(document.getElementById('share-qr'), {
+        text: '',
+        width: 200,
+        height: 200,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+    });
+
+    $(document).on('click', '.btn-connect', function() {
+        if (sid !== undefined) {
+            closeModal($(this).attr('data-modal'));
+            alert('Transaction is on-going.');
+            return;
+        }
+
+        $.ajax({
+            url: 'demo.php',
+            method: 'POST',
+            success: function(data) {
+                sid = data;
+                qrcode.makeCode(sid);
+            }
+        });
+    });
+
+    $(document).on('click', '.btn-cancel-transaction', function() {
+        if (sid !== undefined && confirm('Are you sure to cancel transaction?')) {
+            sid = undefined;
+            // TODO :: DELETE ALL SALES, SALES DETAILS ACCORDING TO THE SID
+            
+            alert('Transaction ended.');
+            window.location.reload();
+        }
+    });
+
+    $(document).on('click', '.btn-pay', function() {
+        
+    });
+
+    var open_menu = document.querySelector('.btn-open-menu');
+    var close_menu = document.querySelector('.btn-close-menu');
+
+    open_menu.addEventListener('click', () => {
+        document.getElementById('nav').style.transform = 'translateX(0%)';
+    });
+
+    close_menu.addEventListener('click', () => {
+        document.getElementById('nav').style.transform = 'translateX(100%)';
+    });
+
+    function load() {
+        if (sid !== undefined) {
+            $.ajax({
+                url: 'read.php',
+                method: 'POST',
+                dataType: 'json',
+                success: function(data) {
+                    var html = "";
+
+                    data.forEach((row) => {
+                        html += "<tr>";
+                            html += "<td>" + row.id + "</td>";
+                            html += "<td>" + row.data + "</td>";
+                            html += "<td></td><td></td>";
+                        html += "</tr>";
+                    });
+
+                    $('.table-cart tbody').html(html);
+                }
+            });
+        }
+    }
+
+    setInterval(load, 1000); 
+</script>
